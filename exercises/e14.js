@@ -7,7 +7,28 @@
 
 export function getClientsWithWrongBalance(array) {
   // Your code goes here...
-
+  const clientBalanceNotEqualToDepositsAndWithdrawalDifference = [];
+  for (const client of array) { 
+    let individualSumDeposits = 0;
+    let individualSumWithdrawals = 0;
+      if (client.deposits) {
+        for (const deposit of client.deposits) {
+        individualSumDeposits += deposit;
+      } 
+      console.log("Deposit Sum: ", individualSumDeposits);
+    }
+      if (client.withdrawals) {
+        for (const withdrawal of client.withdrawals) {
+          individualSumWithdrawals += withdrawal;
+        }
+        console.log("Withdrawal Sum: ", individualSumWithdrawals);
+      }
+      if ((individualSumDeposits -= individualSumWithdrawals) !== client.balance) {
+    clientBalanceNotEqualToDepositsAndWithdrawalDifference.push(client);
+    console.log(client)
+    }
+  }
+  return clientBalanceNotEqualToDepositsAndWithdrawalDifference
 }
 
 

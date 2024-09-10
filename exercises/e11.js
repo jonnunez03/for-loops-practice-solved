@@ -6,7 +6,20 @@
 
 export function getAllWithdrawals(array) {
   // Your code goes here...
-
+  const withdrawalSums = [];
+  for (const client of array) {
+    
+    let individualSum = 0;
+    
+    if (client.withdrawals) {
+      for (const withdrawal of client.withdrawals) {
+        individualSum += withdrawal;
+        console.log("individualSum: ", individualSum);  
+      }
+    } 
+    withdrawalSums.push(individualSum);
+  }
+  return withdrawalSums
 }
 
 // === TEST YOURSELF ===
